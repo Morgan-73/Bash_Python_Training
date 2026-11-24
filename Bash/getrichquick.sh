@@ -1,18 +1,27 @@
 #!/bin/bash
-
-echo "What is your name ?"
+echo "Comment tu t'appelles ?"
 read name
 
-echo "How old are you ?"
-read age
-
+while true; do
+	sleep 1
+	echo "Quel âge as-tu ? (Répondre avec juste un nombre)"
+	read age
+	if [[ $age =~ ^[0-99]*$ ]]; then
+		break
+	else
+		sleep 1
+		echo "Merci de répondre simplement avec un nombre et rien d'autre" 
+	fi
+done
 getrich=$(( $RANDOM % 15 + $age ))
 
-echo "Hello $name, you are $age years old"
+sleep 1
+echo "Salut $name, tu as $age ans. On va calculer à quel âge tu vas devenir riche !"
 
-sleep 2
+sleep 3
 
-echo "Calculating"
+echo "En train de calculer"
+sleep 1
 echo ".........."
 sleep 1
 echo "**........"
@@ -26,4 +35,5 @@ sleep 1
 echo "**********"
 sleep 1
 
-echo "$name, you will become rich at $getrich years old !"
+echo "$name, tu deviendras riche à $getrich ans !"
+
