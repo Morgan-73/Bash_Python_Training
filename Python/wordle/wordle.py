@@ -6,7 +6,7 @@ import unicodedata
 
 # choisir mot random
 def mot():
-    with open("assets/mots.txt") as f:
+    with open("./assets/mots.txt") as f:
         all_text = f.read()
         words = list(map(str, all_text.split()))
         return random.choice(words).lower()
@@ -26,7 +26,7 @@ def charger_mots(chemin):
 
 
 # variable qui stocke les mots chargés
-MOTS = charger_mots("./assets/liste_francais_utf8.txt")
+MOTS = charger_mots("./assets/validite_mots.txt")
 
 
 # vérifie si le mot est valide à partir des mots chargés précédemment
@@ -63,7 +63,7 @@ while continuer:
     while bouton_resultat:
         # boucle pour checker taille mot proposé
         while True:
-            time.sleep(1)
+            time.sleep(0.2)
             guess = input("Essaie de trouver le mot (écris ta proposition) :\n")
             guess = guess.replace(" ", "")
             if len(guess) == len(word) and est_valide(guess):
